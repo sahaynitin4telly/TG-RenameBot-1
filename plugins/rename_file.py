@@ -75,7 +75,7 @@ async def rename_doc(bot, message):
         revoke=True
     )
     
-    if message.from_user.id not in Config.BANNED_USERS:
+    if message.from_user.id in Config.AUTH_USERS:
         file_name = message.text
         description = script.CUSTOM_CAPTION_UL_FILE.format(newname=file_name)
         download_location = Config.DOWNLOAD_LOCATION + "/"
@@ -162,7 +162,7 @@ async def rename_doc(bot, message):
 
             await bot.edit_message_text(
                 text=script.AFTER_SUCCESSFUL_UPLOAD_MSG,
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🙌🏻 SHARE ME 🙌🏻", url="tg://msg?text=Hai%20Friend%20%E2%9D%A4%EF%B8%8F%2C%0AToday%20i%20just%20found%20out%20an%20intresting%20and%20Powerful%20%2A%2ARename%20Bot%2A%2A%20for%20Free%F0%9F%A5%B0.%20%0A%2A%2ABot%20Link%20%3A%2A%2A%20%40TroJanzRenamer%20%F0%9F%94%A5")]]),
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🙌🏻 SHARE ME 🙌🏻", url="tg://msg?text=Hai%20Friend%20%E2%9D%A4%EF%B8%8F%2C%0AToday%20i%20just%20found%20out%20an%20intresting%20and%20Powerful%20%2A%2ARename%20Bot%2A%2A%20for%20Free%F0%9F%A5%B0.%20%0A%2A%2ABot%20Link%20%3A%2A%2A%20%40ftrenamebot%20%F0%9F%94%A5")]]),
                 chat_id=message.chat.id,
                 message_id=a.message_id,
                 disable_web_page_preview=True
@@ -171,7 +171,7 @@ async def rename_doc(bot, message):
     else:
         await bot.send_message(
             chat_id=message.chat.id,
-            text="You're B A N N E D",
+            text="You're not Authorized to do that!",
             reply_to_message_id=message.message_id
         )
 
