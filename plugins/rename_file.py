@@ -74,8 +74,8 @@ async def rename_doc(bot, message):
         message_ids=message.reply_to_message.message_id,
         revoke=True
     )
-    
-    if message.from_user.id in Config.AUTH_USERS:
+    PUBLIC_BOT = True
+    if PUBLIC_BOT:
         file_name = message.text
         description = script.CUSTOM_CAPTION_UL_FILE.format(newname=file_name)
         download_location = Config.DOWNLOAD_LOCATION + "/"
